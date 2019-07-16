@@ -33,7 +33,7 @@ target_language="${1:-}"
 generate_for_language() {
     $SWAGGER_CMD generate \
         --input-spec "./api.json" \
-        --lang "$1" \
+        --generator-name "$1" \
         --config "./swagger-config/config-$1.json" \
         --template-dir "./swagger-templates/$1" \
         --output "./swagger-out/$1"
