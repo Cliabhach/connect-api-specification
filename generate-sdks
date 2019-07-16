@@ -44,7 +44,20 @@ generate_for_language() {
     else
         # That attempt to remove a substring was successful. We will be generating
         # some form of TypeScript code.
-        INPUT_SPEC='./api.json'
+        #
+        # In TypeScript, Error is a reserved word.
+        #
+        # For that reason, we transform instances of the type 'Error' in api.json to
+        # 'SquareError'. Corresponding anchor references ('#type-error') are also
+        # converted.
+        #
+        # The commands below have been tested with
+        # GNU sed 4.4
+        # and
+        # Bash 4.4.x
+        #
+        sed -E 's/\bError\b/SquareError/g' < './api.json'  | sed -E 's/\btype-error\)\b/type-squareerror\)/g' > './ts-api.json'
+        INPUT_SPEC='./ts-api.json'
     fi
 
     $SWAGGER_CMD generate \
