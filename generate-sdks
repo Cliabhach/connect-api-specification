@@ -31,8 +31,24 @@ fi
 target_language="${1:-}"
 
 generate_for_language() {
+
+    INPUT_SPEC='uncertain'
+
+    # Check whether we've been asked to generate TypeScript code.
+    # We do so by trying to strip the string 'typescript' from the first parameter.
+    if [ "${1#typescript}" = "${1}" ]
+    then
+        # That parameter doesn't change when we try to remove the 'typescript'
+        # substring. It's not TypeScript.
+        INPUT_SPEC='./api.json'
+    else
+        # That attempt to remove a substring was successful. We will be generating
+        # some form of TypeScript code.
+        INPUT_SPEC='./api.json'
+    fi
+
     $SWAGGER_CMD generate \
-        --input-spec "./api.json" \
+        --input-spec "$INPUT_SPEC" \
         --generator-name "$1" \
         --config "./swagger-config/config-$1.json" \
         --template-dir "./swagger-templates/$1" \
