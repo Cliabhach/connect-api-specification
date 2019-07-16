@@ -1,0 +1,13 @@
+{
+  "packageName": "Square.Connect",
+  "packageVersion": "2.20190710.0",
+  "projectDescription": "TypeScript client library for the Square Connect v2 API",
+  "licenseName": "Apache-2.0",
+  "httpUserAgent": "Square-Connect-Typescript-Node/2.20190710.0",
+  "gitUserId": "square",
+  "gitRepoId": "connect-typescript-node-sdk",
+  "allowUnicodeIdentifiers": true,
+  "supportsES6": true,
+  "npmName": "square-connect-ts",
+  "npmVersion": "2.20190710.0"
+}
